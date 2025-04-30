@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Checkout SCM') {
             steps {
-    sh 'git clone https://github.com/poky789456/projet-dev01.git'
+                git branch: 'master', credentialsId: 'f70e73ef-7623-455b-a5ab-a637fbdf8701', url: 'https://github.com/poky789456/projet-dev01.git'
                    }
 
             }
@@ -18,7 +18,7 @@ pipeline {
             steps {
               script {
                   sh 'docker build -t myimage_nginx .'
-                  sh 'docker tag myimage_nginx braley:myimage_nginx'
+                  sh 'docker tag myimage_nginx bradley:myimage_nginx'
               }
 
             }
@@ -26,7 +26,7 @@ pipeline {
             stage('Deploiement application') {
             steps {
               script {
-                  sh 'docker rm image mynginx'
+                  sh 'docker image rm mynginx'
                   sh 'docker rm -f $(docker ps -a) '
                   sh 'docker run -d --name monapp --hostname monapp -p 8099:80 myimage_nginx'
               }
