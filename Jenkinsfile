@@ -8,13 +8,6 @@ pipeline {
         }
         stage('Checkout SCM') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'f70e73ef-7623-455b-a5ab-a637fbdf8701', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-                sh '''
-                git config --global user.name "${GIT_USERNAME}"
-                git config --global user.password "${GIT_PASSWORD}"
-                git push --set-upstream origin qa
-                    '''
-}
                 sh 'git clone https://github.com/poky789456/projet-dev01.git'
             }
         }
