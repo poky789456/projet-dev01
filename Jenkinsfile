@@ -26,7 +26,7 @@ pipeline {
             stage('Deploiement application') {
             steps {
               script {
-                  sh 'docker rm -f $(docker ps -a)'
+                  sh 'docker rm -f $(docker ps -a -q)'      
                   sh 'docker run -d --name monapp --hostname monapp -p 8099:80 myimage_nginx'
                   sh 'docker exec -ti mon app "ifconfig"'
               }
