@@ -27,7 +27,7 @@ pipeline {
             steps {
               script {    
                   sh 'docker run -d --name monapp --hostname monapp -p 8099:80 myimage_nginx'
-                  sh 'docker exec mon app "ifconfig"'
+                  sh 'docker exec monapp "ifconfig"'
               }
 
             }
